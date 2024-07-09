@@ -14,10 +14,12 @@ contract Megamis is Initializable, ERC721Upgradeable, OwnableUpgradeable {
         _disableInitializers();
     }
 
-    function initialize(address initialOwner) initializer public {
-        __ERC721_init("Megamis", "MGM");
+    
+
+    function initialize(address initialOwner,string calldata name,string calldata symbol) initializer public {
+        __ERC721_init(name, symbol);
         __Ownable_init(initialOwner);
-        baseTokenURI = "https://m.megam.is/";
+        baseTokenURI = string.concat("https://contracts-develop.sandbox.game/" , symbol , "-unrevealed/");
     }
 
     function setBaseURI(string memory baseURI) external onlyOwner {
